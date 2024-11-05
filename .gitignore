@@ -1,0 +1,25 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Auto-generated files
+GeneratedFiles/
+
+# Other
+*.log
+*.dbmdl
+TestResults/
+*.pdb
