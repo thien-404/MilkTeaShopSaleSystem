@@ -42,8 +42,9 @@ create table Orders(
 create table Order_Detail(
 	order_id int,
 	drink_id int,
+	size nvarchar(20),
 	quantity int,
 	FOREIGN KEY (order_id) REFERENCES Orders(order_id),
-	FOREIGN KEY (drink_id) REFERENCES Drinks(drink_id),
+	FOREIGN KEY (drink_id, size) REFERENCES Prices(drink_id, size),
 )
 
