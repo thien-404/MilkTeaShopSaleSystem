@@ -22,4 +22,10 @@
     <Resource Include="images\41505336.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="ManageStaff.xaml.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>
