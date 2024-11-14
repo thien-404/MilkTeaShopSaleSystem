@@ -1,0 +1,41 @@
+﻿<Window x:Class="MilkTeaShopSalesSystem.ManageOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MilkTeaShopSalesSystem"
+        mc:Ignorable="d"
+        Title="ManageOrder" Height="685" Width="1265" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Background>
+        <ImageBrush ImageSource="images/41505336.jpg" Stretch="Fill"/>
+    </Window.Background>
+    <Grid>
+        <Label Content="Order List" HorizontalAlignment="Left" Height="162" Margin="110,10,0,0" VerticalAlignment="Top" Width="568" FontWeight="Bold" FontSize="80" FontStyle="Italic" Foreground="Black"/>
+        <Rectangle HorizontalAlignment="Left" Height="95" Margin="39,140,0,0" Stroke="Black" VerticalAlignment="Top" Width="824" Fill="LightBlue" RadiusX="10" RadiusY="10" />
+
+        <Label Content="Status" HorizontalAlignment="Left" Height="45" Margin="110,170,0,0" VerticalAlignment="Top" Width="108" Foreground="#ff4500"/>
+        <ComboBox x:Name="StatusComboBox" HorizontalAlignment="Left" Height="29" 
+      Margin="188,172,0,0" VerticalAlignment="Top" Width="180" 
+      Background="#ff4500" TabIndex="7" FontWeight="Bold" FontSize="18"  
+        SelectedIndex="0"
+      >
+            <ComboBoxItem Content="All"/>
+            <ComboBoxItem Content="Active" Tag="2"/>
+            <ComboBoxItem Content="Inactive" Tag="1"/>
+        </ComboBox>
+        <Button x:Name="CreateButton" Content="Create" HorizontalAlignment="Left" Height="50" Margin="1003,294,0,0" VerticalAlignment="Top" Width="185" TabIndex="3"/>
+        <Button x:Name="ViewDetailButton" Content="View Detail" HorizontalAlignment="Left" Height="50" Margin="1003,367,0,0" VerticalAlignment="Top" Width="185
+         " TabIndex="4" Click="ViewDetailButton_Click"/>
+        
+        <DataGrid x:Name="OrdersDataGrid" HorizontalAlignment="Left" Height="310" Margin="39,263,0,0" VerticalAlignment="Top" Width="930" AutoGenerateColumns="False" TabIndex="7" SelectionMode="Extended" FontSize="16">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="40" Binding="{Binding OrderId}" />
+                <DataGridTextColumn Header="Creator" Width="200" Binding="{Binding Staff.UserName}" />
+                <DataGridTextColumn Header="Total Price" Width="400" Binding="{Binding TotalPrice}" />
+                <DataGridTextColumn Header="Status" Width="100" Binding="{Binding OrderStatusDisplay}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="CancelOrder" Content="Cancel" HorizontalAlignment="Left" Height="50" Margin="1003,439,0,0" VerticalAlignment="Top" Width="185" TabIndex="4" />
+
+    </Grid>
+</Window>
