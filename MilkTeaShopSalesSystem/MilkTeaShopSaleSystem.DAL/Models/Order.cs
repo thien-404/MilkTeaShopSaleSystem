@@ -28,4 +28,5 @@ public partial class Order
             };
         }
     }
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }

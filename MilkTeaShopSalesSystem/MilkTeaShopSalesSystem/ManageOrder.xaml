@@ -23,7 +23,7 @@
             <ComboBoxItem Content="Active" Tag="2"/>
             <ComboBoxItem Content="Inactive" Tag="1"/>
         </ComboBox>
-        <Button x:Name="CreateButton" Content="Create" HorizontalAlignment="Left" Height="50" Margin="1003,294,0,0" VerticalAlignment="Top" Width="185" TabIndex="3"/>
+        <Button x:Name="CreateButton" Content="Create" HorizontalAlignment="Left" Height="50" Margin="1003,294,0,0" VerticalAlignment="Top" Width="185" TabIndex="3" Click="CreateButton_Click"/>
         <Button x:Name="ViewDetailButton" Content="View Detail" HorizontalAlignment="Left" Height="50" Margin="1003,367,0,0" VerticalAlignment="Top" Width="185
          " TabIndex="4" Click="ViewDetailButton_Click"/>
         

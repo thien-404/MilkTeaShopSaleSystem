@@ -18,4 +18,5 @@ public partial class OrderDetail
     public virtual Price? Price { get; set; }
 
     public decimal SubTotal => (decimal)((Price?.Price1 ?? 0) * Quantity);
+
 }
