@@ -16,5 +16,25 @@ namespace MilkTeaShopSaleSystem.BLL.Services
         {
             return _repo.getDrinksList();
         }
+        public void ChangeStatusDrinks(Drink drink)
+        {
+            _repo.DeleteDrink(drink);
+        }
+        public void UpdateDrinks(Drink drink)
+        {
+            _repo.UpdateDrink(drink);   
+        }
+        public void CreateDrinks(Drink drink)
+        {
+            _repo.CreateDrink(drink);
+        }
+        public List<Drink> getDrinksByName(string name)
+        {
+            return _repo.SearchDrinksByName(name);
+        }
+        public List<Drink> getDrinkByStatus(int? status)
+        {
+            return _repo.GetDrinksByStatus(status);
+        }
     }
 }

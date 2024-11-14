@@ -27,15 +27,15 @@ public partial class MilkTeaShopSaleDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server= TRANTHIEN\\THIENSQLSERVER;uid=sa;pwd=12345;database=MilkTeaShopSaleDB;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database= MilkTeaShopSaleDB;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Drink>(entity =>
         {
-            entity.HasKey(e => e.DrinkId).HasName("PK__Drinks__C661FE9AD25718CB");
+            entity.HasKey(e => e.DrinkId).HasName("PK__Drinks__C661FE9A46CB50E8");
 
-            entity.HasIndex(e => e.DrinkName, "UQ__Drinks__26C95D03E39B7C7C").IsUnique();
+            entity.HasIndex(e => e.DrinkName, "UQ__Drinks__26C95D039343F07F").IsUnique();
 
             entity.Property(e => e.DrinkId).HasColumnName("drink_id");
             entity.Property(e => e.Description)
@@ -49,7 +49,7 @@ public partial class MilkTeaShopSaleDbContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__46596229D823FAD2");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__46596229D4B270C4");
 
             entity.Property(e => e.OrderId).HasColumnName("order_id");
             entity.Property(e => e.OrderStatus).HasColumnName("order_status");
@@ -60,7 +60,7 @@ public partial class MilkTeaShopSaleDbContext : DbContext
 
             entity.HasOne(d => d.Staff).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.StaffId)
-                .HasConstraintName("FK__Orders__order_st__2E1BDC42");
+                .HasConstraintName("FK__Orders__order_st__1A14E395");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
@@ -72,19 +72,22 @@ public partial class MilkTeaShopSaleDbContext : DbContext
             entity.Property(e => e.DrinkId).HasColumnName("drink_id");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
-
-            entity.HasOne(d => d.Drink).WithMany()
-                .HasForeignKey(d => d.DrinkId)
-                .HasConstraintName("FK__Order_Det__drink__30F848ED");
+            entity.Property(e => e.Size)
+                .HasMaxLength(20)
+                .HasColumnName("size");
 
             entity.HasOne(d => d.Order).WithMany()
                 .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__Order_Det__order__300424B4");
+                .HasConstraintName("FK__Order_Det__order__1BFD2C07");
+
+            entity.HasOne(d => d.Price).WithMany()
+                .HasForeignKey(d => new { d.DrinkId, d.Size })
+                .HasConstraintName("FK__Order_Detail__1CF15040");
         });
 
         modelBuilder.Entity<Price>(entity =>
         {
-            entity.HasKey(e => new { e.DrinkId, e.Size }).HasName("PK__Prices__0499C9748ECBD835");
+            entity.HasKey(e => new { e.DrinkId, e.Size }).HasName("PK__Prices__0499C974C3E4909F");
 
             entity.Property(e => e.DrinkId).HasColumnName("drink_id");
             entity.Property(e => e.Size)
@@ -98,16 +101,16 @@ public partial class MilkTeaShopSaleDbContext : DbContext
             entity.HasOne(d => d.Drink).WithMany(p => p.Prices)
                 .HasForeignKey(d => d.DrinkId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Prices__drink_id__2B3F6F97");
+                .HasConstraintName("FK__Prices__drink_id__173876EA");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__B9BE370F19CBABAB");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__B9BE370F7EE4B1BA");
 
-            entity.HasIndex(e => e.UserName, "UQ__Users__7C9273C4569A8C6F").IsUnique();
+            entity.HasIndex(e => e.UserName, "UQ__Users__7C9273C473ADFD88").IsUnique();
 
-            entity.HasIndex(e => e.Email, "UQ__Users__AB6E616429C96A36").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__AB6E61646DEF1D8E").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.Email)

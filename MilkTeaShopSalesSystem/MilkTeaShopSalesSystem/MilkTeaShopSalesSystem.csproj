@@ -9,9 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\41505336.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MilkTeaShopSaleSystem.BLL\MilkTeaShopSaleSystem.BLL.csproj">
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\41505336.jpg" />
   </ItemGroup>
 
 </Project>
