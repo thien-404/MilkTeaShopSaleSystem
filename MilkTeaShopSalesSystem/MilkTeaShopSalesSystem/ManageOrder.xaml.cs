@@ -51,6 +51,12 @@ namespace MilkTeaShopSalesSystem
         {
             OrdersDataGrid.ItemsSource = orders;
         }
-        
+
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewOrderWindow newOrder = new();
+            newOrder.ShowDialog();
+            ReloadData(_service.getOrderToStaff(2));
+        }
     }
 }
