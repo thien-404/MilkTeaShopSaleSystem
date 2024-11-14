@@ -1,5 +1,4 @@
-﻿using MilkTeaShopSaleSystem.DAL.Models;
-using MilkTeaShopSaleSystem.DAL.Repositories;
+﻿using MilkTeaShopSaleSystem.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +11,5 @@ namespace MilkTeaShopSaleSystem.BLL.Services
     {
         private DrinksRepository _repo = new();
 
-        public List<Drink> getAllDrinks()
-        {
-            return _repo.getDrinksList();
-        }
     }
 }

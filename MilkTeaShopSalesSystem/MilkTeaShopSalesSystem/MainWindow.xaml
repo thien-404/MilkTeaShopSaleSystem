@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MilkTeaShopSalesSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="DrinkDataGrid" HorizontalAlignment="Left" Height="173" Margin="135,72,0,0" VerticalAlignment="Top" Width="501" AutoGenerateColumns="True"/>
 

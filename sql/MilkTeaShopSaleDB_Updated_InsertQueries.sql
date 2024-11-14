@@ -38,18 +38,3 @@ INSERT INTO Prices (drink_id, size, price, price_status) VALUES
 (7, 'Large', 4.00, 2),
 (8, 'Small', 3.25, 2),
 (9, 'Medium', 3.50, 2)
-
--- Enable IDENTITY_INSERT for Orders table
-SET IDENTITY_INSERT Orders ON;
-INSERT INTO Orders (order_id, staff_id, total_price, order_status) VALUES
-(1, 1, 8.50, 2),
-(2, 2, 7.00, 3),
-(3, 4, 10.00, 2);
-SET IDENTITY_INSERT Orders OFF;
-
--- Insert into Order_Detail table
-INSERT INTO Order_Detail (order_id, drink_id, quantity) VALUES
-(1, 1, 2),
-(1, 2, 1),
-(2, 1, 3),
-(3, 4, 2);

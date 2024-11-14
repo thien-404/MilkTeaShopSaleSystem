@@ -9,9 +9,11 @@ public partial class OrderDetail
 
     public int? DrinkId { get; set; }
 
+    public string? Size { get; set; }
+
     public int? Quantity { get; set; }
 
-    public virtual Drink? Drink { get; set; }
-
     public virtual Order? Order { get; set; }
+
+    public virtual Price? Price { get; set; }
 }
