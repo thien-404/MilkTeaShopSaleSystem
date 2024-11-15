@@ -47,24 +47,23 @@ namespace MilkTeaShopSalesSystem
                 MessageBox.Show("Sorry, wrong email or pass", "require", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-<<<<<<< HEAD
+
             if (acc.UserRole == "Manager")
             {
                 ManagerWindow manager = new();
                 
             }
-            ManageDrinks main = new();
-=======
+            
+
             if (acc.UserRole == "Cashier")
             {
                 ManageOrder orderStaff = new();
                 orderStaff.User = acc;
                 orderStaff.Show();
             }
-            ManageOrder main = new();
-            main.User = acc;
->>>>>>> af9ae0389924417c709525d6933578520b3fe187
-            main.Show();
+            //ManageOrder main = new();
+            //main.User = acc;
+            //main.Show();
         }
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
