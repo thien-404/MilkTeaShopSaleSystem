@@ -53,7 +53,15 @@ namespace MilkTeaShopSalesSystem
             var orderDetail = newDetail.OrderDetail;
             if (orderDetail != null)
             {
-                _orderDetailList.Add(orderDetail);
+                var existDetail = _orderDetailList.FirstOrDefault(od => od.DrinkId == orderDetail.DrinkId && od.Size == orderDetail.Size);
+                if (existDetail != null) 
+                {
+                    existDetail.Quantity += orderDetail.Quantity;
+                }
+                else
+                {
+                    _orderDetailList.Add(orderDetail);
+                }
                 Load_Window() ;
             }
         }
