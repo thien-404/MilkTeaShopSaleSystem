@@ -72,8 +72,7 @@ namespace MilkTeaShopSalesSystem
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Are you sure to quit !", "QUIT", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            Application.Current.Shutdown();
+            this.Close();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

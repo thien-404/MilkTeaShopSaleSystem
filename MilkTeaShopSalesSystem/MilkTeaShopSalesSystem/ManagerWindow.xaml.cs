@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MilkTeaShopSaleSystem.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +21,7 @@ namespace MilkTeaShopSalesSystem
     /// </summary>
     public partial class ManagerWindow : Window
     {
+        public User User { get; set; }
         public ManagerWindow()
         {
             InitializeComponent();
@@ -26,17 +29,22 @@ namespace MilkTeaShopSalesSystem
 
         private void ManageDrinkButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ManageDrinks drinks = new ManageDrinks();
+            drinks.ShowDialog();
         }
 
         private void ManageStaffButton_Click(object sender, RoutedEventArgs e)
         {
-
+            StaffManager staff = new();
+            staff.AuthenticatedUser = User;
+            staff.ShowDialog();
         }
 
         private void ManageOrderDetailButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ManageOrder order = new();
+            order.User = User;
+            order.ShowDialog();
         }
     }
 }
