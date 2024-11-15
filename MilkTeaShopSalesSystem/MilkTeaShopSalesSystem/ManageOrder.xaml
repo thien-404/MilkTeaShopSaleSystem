@@ -35,7 +35,7 @@
                 <DataGridTextColumn Header="Status" Width="100" Binding="{Binding OrderStatusDisplay}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="CancelOrder" Content="Cancel" HorizontalAlignment="Left" Height="50" Margin="1003,439,0,0" VerticalAlignment="Top" Width="185" TabIndex="4" />
+        <Button x:Name="CancelOrder" Content="Cancel" HorizontalAlignment="Left" Height="50" Margin="1003,439,0,0" VerticalAlignment="Top" Width="185" TabIndex="4" Click="CancelOrder_Click" />
 
     </Grid>
 </Window>
