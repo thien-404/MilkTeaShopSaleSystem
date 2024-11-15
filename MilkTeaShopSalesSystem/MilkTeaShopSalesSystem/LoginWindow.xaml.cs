@@ -51,7 +51,8 @@ namespace MilkTeaShopSalesSystem
             if (acc.UserRole == "Manager")
             {
                 ManagerWindow manager = new();
-                
+                manager.User = acc;
+                manager.Show();
             }
             
 
