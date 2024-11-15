@@ -26,7 +26,6 @@ public partial class MilkTeaShopSaleDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database= MilkTeaShopSaleDB;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -61,28 +60,36 @@ public partial class MilkTeaShopSaleDbContext : DbContext
             entity.HasOne(d => d.Staff).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.StaffId)
                 .HasConstraintName("FK__Orders__order_st__1A14E395");
+
+            entity.HasMany(o => o.OrderDetails)
+              .WithOne(od => od.Order)
+              .HasForeignKey(od => od.OrderId)
+              .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Order_Detail");
+            entity.ToTable("Order_Detail"); // Explicitly set the table name
+
+            entity.HasKey(e => new { e.OrderId, e.DrinkId, e.Size });
 
             entity.Property(e => e.DrinkId).HasColumnName("drink_id");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
             entity.Property(e => e.Size)
-                .HasMaxLength(20)
-                .HasColumnName("size");
+                  .HasMaxLength(20)
+                  .HasColumnName("size");
 
-            entity.HasOne(d => d.Order).WithMany()
-                .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__Order_Det__order__1BFD2C07");
+            entity.HasOne(d => d.Order)
+                  .WithMany(o => o.OrderDetails)
+                  .HasForeignKey(d => d.OrderId)
+                  .OnDelete(DeleteBehavior.Cascade)
+                  .HasConstraintName("FK_OrderDetail_Order");
 
-            entity.HasOne(d => d.Price).WithMany()
-                .HasForeignKey(d => new { d.DrinkId, d.Size })
-                .HasConstraintName("FK__Order_Detail__1CF15040");
+            entity.HasOne(d => d.Price)
+                  .WithMany()
+                  .HasForeignKey(d => new { d.DrinkId, d.Size })
+                  .HasConstraintName("FK_OrderDetail_Price");
         });
 
         modelBuilder.Entity<Price>(entity =>

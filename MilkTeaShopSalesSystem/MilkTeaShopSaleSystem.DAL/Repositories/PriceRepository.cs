@@ -1,4 +1,5 @@
-﻿using MilkTeaShopSaleSystem.DAL.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MilkTeaShopSaleSystem.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace MilkTeaShopSaleSystem.DAL.Repositories
         public List<Price> getPrice(Drink drink)
         {
             _context = new MilkTeaShopSaleDbContext();
-            return _context.Prices.Where(p => p.DrinkId.ToString() == drink.DrinkId.ToString()).ToList();
+            return _context.Prices.Include(p => p.Drink).Where(p => p.DrinkId.ToString() == drink.DrinkId.ToString()).ToList();
         }
         public void changeStatusPrice(Price price)
         {
