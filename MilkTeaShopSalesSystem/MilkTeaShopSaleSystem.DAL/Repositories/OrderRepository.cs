@@ -17,6 +17,12 @@ namespace MilkTeaShopSaleSystem.DAL.Repositories
             _context = new();
             return _context.Orders.Include("Staff").Where(o => o.StaffId == staffId).ToList();
         }
+        public List<Order> getOrderToManager()
+        {
+            _context = new();
+            return _context.Orders.Include("Staff").ToList();
+        }
+
         public void PlaceOrder(Order order, List<OrderDetail> orderDetails)
         {
             _context = new();

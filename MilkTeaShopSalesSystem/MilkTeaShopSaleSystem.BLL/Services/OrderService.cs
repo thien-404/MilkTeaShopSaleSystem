@@ -16,6 +16,10 @@ namespace MilkTeaShopSaleSystem.BLL.Services
         {
             return _repo.getOrderToStaff(staffId);
         }
+        public List<Order> getOrderToManager()
+        {
+            return _repo.getOrderToManager();
+        }
         public void PlaceOrder(Order order, List<OrderDetail> orderDetails)
         {
             if (order == null)
