@@ -23,6 +23,7 @@ namespace MilkTeaShopSalesSystem
     public partial class ManageOrder : Window
     {
         private OrderService _service = new();
+        public User User { get; set; }
         public ManageOrder()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace MilkTeaShopSalesSystem
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            OrdersDataGrid.ItemsSource = _service.getOrderToStaff(2);
+            ReloadData();
         }
 
         private void ViewDetailButton_Click(object sender, RoutedEventArgs e)
@@ -44,19 +45,34 @@ namespace MilkTeaShopSalesSystem
             OrderDetailWindow detail = new();
             detail._choosedOrder = Choosed;
             detail.ShowDialog();
-            ReloadData(_service.getOrderToStaff(2));
+            ReloadData();
         }
 
-        private void ReloadData(List<Order> orders)
+        private void ReloadData()
         {
-            OrdersDataGrid.ItemsSource = orders;
+            string manaRole = "Manager";
+            if (manaRole.Equals(User.UserRole))
+            {
+                OrdersDataGrid.ItemsSource = _service.getOrderToManager();
+                CreateButton.IsEnabled = false;
+            }
+            else
+            {
+                OrdersDataGrid.ItemsSource = _service.getOrderToStaff(User.UserId);
+            }
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             NewOrderWindow newOrder = new();
+            newOrder.User = User;
             newOrder.ShowDialog();
-            ReloadData(_service.getOrderToStaff(2));
+            ReloadData();
+        }
+
+        private void CancelOrder_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

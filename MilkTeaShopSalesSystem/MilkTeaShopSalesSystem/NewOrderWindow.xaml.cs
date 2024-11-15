@@ -23,6 +23,7 @@ namespace MilkTeaShopSalesSystem
     {
         private OrderService _orderSer = new();
         private List<OrderDetail> _orderDetailList = new List<OrderDetail>();
+        public User User { get; set; }
 
         public NewOrderWindow()
         {
@@ -92,7 +93,7 @@ namespace MilkTeaShopSalesSystem
 
                 var order = new Order
                 {
-                    StaffId = 2, // Replace with dynamic Staff ID logic
+                    StaffId = User.UserId, // Replace with dynamic Staff ID logic
                     TotalPrice = _orderDetailList.Sum(d => d.SubTotal),
                     OrderStatus = 2 // Example: Pending
                 };

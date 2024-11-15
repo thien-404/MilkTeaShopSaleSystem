@@ -47,11 +47,14 @@ namespace MilkTeaShopSalesSystem
                 MessageBox.Show("Sorry, wrong email or pass", "require", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            //if (acc.UserRole == "Cashier")
-            //{
-            //    ManageOrder orderStaff = new();
-            //}
-            ManageDrinks main = new();
+            if (acc.UserRole == "Cashier")
+            {
+                ManageOrder orderStaff = new();
+                orderStaff.User = acc;
+                orderStaff.Show();
+            }
+            ManageOrder main = new();
+            main.User = acc;
             main.Show();
         }
 
