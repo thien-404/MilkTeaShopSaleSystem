@@ -26,6 +26,7 @@ public partial class MilkTeaShopSaleDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
         => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database= MilkTeaShopSaleDB;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

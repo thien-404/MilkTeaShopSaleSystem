@@ -1,0 +1,30 @@
+﻿<Window x:Class="MilkTeaShopSalesSystem.CreateUpdateStaff"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MilkTeaShopSalesSystem"
+        mc:Ignorable="d"
+              Title="Staff Detail" Height="750" Width="1145" Background="BlanchedAlmond" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" >
+    <Grid>
+        <Label x:Name="DetailTitle" Content="Create | Update Staff" HorizontalAlignment="Left" Height="80" Margin="31,20,0,0" VerticalAlignment="Top" Width="659" FontWeight="Heavy" FontSize="50"/>
+        <Rectangle HorizontalAlignment="Left" Height="432" Margin="38,144,0,0" Stroke="Black" VerticalAlignment="Top" Width="875" Fill="Lavender"/>
+        <Label Content="Staff ID" HorizontalAlignment="Left" Height="45" Margin="58,172,0,0" VerticalAlignment="Top" Width="107" Foreground="#ff4500"/>
+        <TextBox x:Name="StaffIdTextBox" HorizontalAlignment="Left" Height="45" Margin="226,169,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="275" TabIndex="0"/>
+        <Label Content="Staff Name" HorizontalAlignment="Left" Height="45" Margin="58,234,0,0" VerticalAlignment="Top" Width="107" Foreground="#ff4500"/>
+        <TextBox x:Name="StaffNameTextBox" HorizontalAlignment="Left" Height="45" Margin="226,229,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="637" TabIndex="1"/>
+
+        <Button x:Name="SaveButton" Content="Save Staff" HorizontalAlignment="Left" Height="50" Margin="945,144,0,0" VerticalAlignment="Top" Width="165" TabIndex="8" Click="SaveButton_Click" />
+        <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Height="50" Margin="945,224,0,0" VerticalAlignment="Top" Width="165" TabIndex="9" Click="CloseButton_Click"  />
+        <Label Content="Email" HorizontalAlignment="Left" Height="45" Margin="58,296,0,0" VerticalAlignment="Top" Width="107" Foreground="#ff4500"/>
+        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="45" Margin="226,291,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="637" TabIndex="2" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
+        <Label Content="Password" HorizontalAlignment="Left" Height="45" Margin="58,360,0,0" VerticalAlignment="Top" Width="140" Foreground="#ff4500"/>
+        <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Height="45" Margin="226,360,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" TabIndex="4"/>
+        <Label Content="Role" HorizontalAlignment="Left" Height="45" Margin="58,417,0,0" VerticalAlignment="Top" Width="107" Foreground="#ff4500" RenderTransformOrigin="-4.023,0.645"/>
+        <TextBox x:Name="RoleTextBox" HorizontalAlignment="Left" Height="45" Margin="226,417,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="227" TabIndex="5"/>
+        <Label Content="Status" HorizontalAlignment="Left" Height="45" Margin="58,489,0,0" VerticalAlignment="Top" Width="107" Foreground="#ff4500"/>
+        <TextBox x:Name="StatusTextBox" HorizontalAlignment="Left" Height="45" Margin="228,489,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="635" TabIndex="6"/>
+
+
+    </Grid>
+</Window>
